@@ -1,0 +1,13 @@
+{{ partial "header" . }}
+    <section>
+    <h2>{{ .Title }}</h2>
+{{ $articles := where .Site.RegularPages "Section" .Type  }}
+{{ $paginator := .Paginate $articles }} 
+    <ul>
+        {{ range (.Paginator 20).Pages }} {{ partial "list-item" . }} {{ end }}
+    </ul>
+{{ partial "paginator" . }}
+
+</section>
+
+{{ partial "footer" . }}

@@ -1,0 +1,42 @@
+{{ if eq .Site.Params.sidenav "true" }}
+<bx-side-nav aria-label="Side navigation" role="navigation" collapse-mode="responsive" usage-mode="">
+    {{ if eq .Site.Params.sidemenu "auto" }}
+    {{ $currentPage := . }}
+    {{ range .Site.Home.Pages}}
+        {{ if .Pages }}
+        <bx-side-nav-items role="list">
+        <bx-side-nav-menu title="{{ .Title }}" role="listitem" {{ if .InSection $currentPage }}expanded=""{{ end }}>
+            {{ range .Pages }}
+                <bx-side-nav-menu-item href="{{ .Permalink }}" tabindex="-1" {{ if eq .Permalink $currentPage.Permalink  }}active=""{{ end }}>
+                    {{ .Title }}
+                </bx-side-nav-menu-item>
+            {{ end }}
+        </bx-side-nav-menu>
+        {{ else }}
+        <bx-side-nav-menu-item href="{{ .Permalink }}" tabindex="-1"  {{ if eq .Permalink $currentPage.Permalink  }}active=""{{ end }}>
+            {{ .Title }}
+        </bx-side-nav-menu-item>
+        {{ end }}
+    {{ end }}
+    {{ end }}
+    </bx-side-nav-items>
+    {{ if .Site.Menus.sidelinks }}
+        <bx-side-nav-divider role="separator"></bx-side-nav-divider>
+        <bx-side-nav-items role="list">
+        {{ range sort .Site.Menus.sidelinks }}
+            {{ if .HasChildren }}
+            <bx-side-nav-menu menu-label="{{ .Name }}" trigger-content="{{ .Name }}" role="listitem">
+                {{ range .Children }}
+                    <bx-side-nav-menu-item href="{{ .URL }}" tabindex="-1" role="listitem">
+                        {{ .Name }}
+                    </bx-side-nav-menu-item>
+                {{ end }}
+            </bx-side-nav-menu>
+            {{ else }}
+            <bx-side-nav-menu-item href="{{ .URL }}">{{ .Name }}</bx-side-nav-menu-item>
+            {{ end }}
+        {{ end }}
+    {{ end }}        
+    </bx-side-nav-items>
+  </bx-side-nav>
+{{ end }}

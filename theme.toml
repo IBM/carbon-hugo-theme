@@ -1,0 +1,11 @@
+name = "Carbon theme for Hugo"
+license = "Apache 2.0"
+licenselink = "LICENSE.md"
+description = "Theme for hugo styled based on Carbon design system"
+tags = ["blog", "carbon", "responsive"]
+features = ["responsive"]
+min_version = "0.24.1"
+
+[author]
+  name = "Ricky Moorhouse"
+  homepage = "https://rickymoorhouse.uk/"

@@ -1,0 +1,9 @@
+
+    {{ $.Scratch.Set "link" .RelPermalink }}
+    {{ with .Params.link }} {{ $.Scratch.Set "link" . }} {{ end }}
+
+    {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") | $.Scratch.Set "subtitle" }}
+    {{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
+    <div class="item-header">
+        <h1 class="p-name"><a href="{{ .Scratch.Get "link" }}" class="u-url">{{ .Title }}</a></h1>
+    </div>

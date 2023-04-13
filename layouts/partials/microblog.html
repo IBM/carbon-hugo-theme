@@ -1,0 +1,50 @@
+
+
+
+    {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") | $.Scratch.Set "subtitle" }}
+    {{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
+    <div class="header">
+
+      <h4>
+        {{ .Content }} 
+      </h4>
+        {{ if eq "1 January 0001" ($.Scratch.Get "subtitle") }}&nbsp;{{ else }}
+        <h5>
+            {{ $.Scratch.Get "subtitle" }} <a href="{{ .Permalink }}">#</a>
+            <div class="tags">
+            {{ range .Params.tags }}
+            <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}" class="item-tag tag-{{ . }}">{{ . }}</a>
+            {{ end }}
+            </div>
+        </h5>
+        {{ end }}
+    </div>
+
+<div class="text-left">
+  {{ with .Resources.Match "*.mp4" }}
+  {{ range first 1 . }}
+  <video width=100% controls autoplay>'
+    <source src="{{ .RelPermalink }}" type="video/mp4"></video>
+    {{ end }}
+    {{ end }}
+    {{ with .Resources.ByType "image" }}
+    <center>
+    {{if eq (len .) 1}}
+      {{ range first 1 . }}
+      {{ $image := .Resize "700x" }} 
+      <a class="image-popup-vertical-fit" href="{{ .RelPermalink }}"><img src="{{ $image.RelPermalink }}" alt="."></a>
+      {{ end }}
+    {{ else if eq (len .) 3}}
+      {{ range first 3 . }}
+      {{ $image := .Fill "200x200" }} 
+      <a class="image-popup-vertical-fit" href="{{ .RelPermalink }}"><img src="{{ $image.RelPermalink }}" alt="."></a>
+      {{ end }}
+    {{ else }}
+      {{ range first 5 . }}
+      {{ $image := .Fill "300x300" }} 
+      <a class="image-popup-vertical-fit" href="{{ .RelPermalink }}"><img src="{{ $image.RelPermalink }}" alt="."></a>
+      {{ end }}
+    {{ end }}
+  </center>
+  {{ end }}
+</div>

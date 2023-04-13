@@ -1,0 +1,42 @@
+{{ partial "header" . }}
+    <article class="h-entry">
+    <div class="header">
+        <h1 class="p-name"><a href="{{ .Scratch.Get "link" }}" class="u-url">{{ .Title }}</a></h1>
+    </div>
+    <div class="text-left e-content">{{ .Content }}</div>
+
+    <!-- related posts with the same tags -->
+    {{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+
+    {{ if and .Site.DisqusShortname (not .Params.disableComments) }}
+
+        <h4 class="page-header">Comments</h4>
+
+        {{ template "_internal/disqus.html" . }}
+
+    {{ end }}
+    {{ if .Params.hideImages }}{{ else }}
+    {{ .Params.type }}
+        {{ with .Resources.ByType "image" }}
+        <div class="Image">
+        {{ range . }}
+            <figure>
+            {{ if eq .MediaType.SubType "svg" }}
+            {{ else }}
+            <a class="image-popup-vertical-fit" 
+            {{ with .Exif }}title="{{ .Tags.ImageDescription }}"{{ end }}
+                href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}" 
+            {{ with .Exif }}alt="{{ .Tags.ImageDescription }}"{{ end }}></a>
+            {{ with .Exif }}
+            <figcaption>
+            <h4>{{ .Tags.ImageDescription }}</h4>
+            </figcaption>
+            {{ end }}
+            {{ end }}
+            </figure>
+        {{ end }}
+        </div>
+        {{ end }}
+    {{ end }}
+</article>
+{{ partial "footer.html" . }}

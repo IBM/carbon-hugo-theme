@@ -1,0 +1,32 @@
+{{ if eq .Site.Params.sidenav "true" }}
+<bx-side-nav aria-label="Side navigation" expanded>
+    {{ if eq .Site.Params.sidemenu "auto" }}
+    <bx-side-nav-items>
+        {{ $currentPage := . }}
+        {{ range .Site.Home.Pages}}
+            {{ if .Pages }}
+            <bx-side-nav-menu title="{{ .Title }}">
+                {{ range .Pages }}
+                <bx-side-nav-menu-item href="{{ .Permalink}}">
+                    {{ .Title }}
+                </bx-side-nav-menu-item>
+                {{ end }}
+            </bx-side-nav-menu>
+            {{ else }}
+            <bx-side-nav-menu-item href="{{ .Permalink}}">
+                {{ .Title }}
+            </bx-side-nav-menu-item>
+            {{ end }}
+        {{ end }}
+    </bx-side-nav-items>
+    {{ else }}
+        {{ if .Site.Menus.main }}
+        <bx-side-nav-items>
+            {{ range sort .Site.Menus.main }}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+        </bx-side-nav-items>
+        {{ end }}
+    {{ end }}
+    </bx-side-nav>
+{{ end }}

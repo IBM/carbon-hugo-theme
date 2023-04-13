@@ -1,0 +1,14 @@
+{{ with .Resources.ByType "image" }}
+<div class="Image">
+{{ range . }}
+    <figure>
+       {{ if (isset .Exif.Tags "ImageDescription") }}
+           <a class="image-popup-vertical-fit" href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}" alt="{{ .Exif.Tags.ImageDescription }}"></a>
+           <figcaption>
+           {{ .Exif.Tags.ImageDescription }}
+            </figcaption>
+       {{ end }}
+    </figure>
+{{ end }}
+</div>
+{{ end }}
