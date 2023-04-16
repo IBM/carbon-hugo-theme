@@ -6,3 +6,5 @@ Making use of [Carbon](https://carbondesignsystem.com/) for [Hugo](https://gohug
 
 ![Screenshot of theme](images/tn.png)
 
+ - Support for Instana EUM (just set params > instanaKey)
+

@@ -4,8 +4,17 @@
     <title>{{ .Title }}</title>
   <meta charset="UTF-8" />
   <meta name="theme-color" content="{{ .Site.Params.header | default "#354F52" }}">
+  {{ if .Site.Params.instanaKey }}
+  <script>
+  (function(s,t,a,n){s[t]||(s[t]=a,n=s[a]=function(){n.q.push(arguments)},
+  n.q=[],n.v=2,n.l=1*new Date)})(window,"InstanaEumObject","ineum");
 
-
+  ineum('reportingUrl', 'https://eum-coral-saas.instana.io');
+  ineum('key', '{{ .Site.Params.instanaKey }}');
+  ineum('trackSessions');
+  </script>
+  <script defer crossorigin="anonymous" src="https://eum.instana.io/eum.min.js"></script>
+  {{ end }}
   <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/ui-shell.min.js"></script>
   <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/content-switcher.min.js"></script>
   <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/skip-to-content.min.js"></script>
