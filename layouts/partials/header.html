@@ -38,37 +38,9 @@
       <link rel="apple-touch-icon" href="{{ .Site.Params.siteicon | absURL }}" />
   {{ end }}
   {{ partial "css" . }} {{ partial "js" . }} {{ hugo.Generator }}
-  {{ if .Resources.ByType "image" }}
-  {{ if .Params.featured }}
-  {{ with .Resources.Match .Params.featured }}
-      {{ range first 1 . }}
-      {{ $image := .Fit "900x450" }}
-          <meta name="twitter:card" content="summary_large_image">
-          <meta name="twitter:image" content="{{ $image.Permalink }}" />
-          <meta property="og:image" content="{{ $image.Permalink }}" />
-          <meta property="og:image:width" content="{{ $image.Width }}" />
-          <meta property="og:image:height" content="{{ $image.Height }}" />
-      {{ end }}
-  {{ end }}
-  {{ else }}
-      {{ with .Resources.ByType "image" }}
-      {{ range first 1 . }}
-          <meta name="twitter:card" content="summary_large_image">
-          <meta name="twitter:image" content="{{ .RelPermalink }}" />
-          <meta property="og:image" content="{{ .Permalink }}" />
-          <meta property="og:image:width" content="{{ .Width }}" />
-          <meta property="og:image:height" content="{{ .Height }}" />
-      {{ end }}
-      {{ end }}
-  {{ end }}
-{{ else }}
-<meta name="twitter:card" content="summary" />
-<meta property="og:image:height" content="120" />
-<meta property="og:image:width" content="120" />
-{{ end }}
-<meta name="twitter:description" property="og:description" content="{{ .Summary }}" />
-<meta name="twitter:title" property="og:title" content="{{ .Title }}" />
-<meta property="og:url" content="{{ .Permalink }}" />
+
+  {{ template "_internal/opengraph.html" . }}
+  
   <style>
 @media (min-width: 66rem) {
 .container .bx--grid {
