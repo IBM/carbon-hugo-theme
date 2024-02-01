@@ -58,8 +58,8 @@ a.u-url {text-decoration: none;color:black;}
 /* Intro page */
 div.intro {
     padding-top: 3rem;
-    background: black;
-    color: white;
+    /*background: black;
+    color: white;*/
     width: 100vw;
     margin-left: -4rem;
     padding: 3rem 5rem;

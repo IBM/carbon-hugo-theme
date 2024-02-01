@@ -15,21 +15,11 @@
   </script>
   <script defer crossorigin="anonymous" src="https://eum.instana.io/eum.min.js"></script>
   {{ end }}
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/ui-shell.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/content-switcher.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/skip-to-content.min.js"></script>
-  <!--<script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/accordion.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/breadcrumb.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/button.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/code-snippet.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/data-table.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/notification.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/skeleton-placeholder.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/skeleton-text.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/slider.min.js"></script>
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/structured-list.min.js"></script>
-  -->
-  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/tag.min.js"></script>
+  <link rel="stylesheet" href="https://1.www.s81c.com/common/carbon/web-components/tag/v2/latest/themes.css" />
+  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/v2/latest/ui-shell.min.js"></script>
+  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/v2/latest/content-switcher.min.js"></script>
+  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/v2/latest/skip-to-content.min.js"></script>
+  <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/v2/latest/tag.min.js"></script>
   {{ if .Site.Params.favicon }}
   <link rel="icon" href="{{ .Site.Params.favicon | absURL }}">
   {{ end }}
@@ -43,7 +33,7 @@
   
   <style>
 @media (min-width: 66rem) {
-.container .bx--grid {
+.container .cds--grid {
   padding-left: calc(25% + 1.5rem);
   padding-right: 2rem;
 }    
@@ -53,28 +43,28 @@
     }
   </style>
 </head>
-<body class="{{ .Site.Params.build }}">
+<body class="cds-theme-zone-g100 {{ .Site.Params.build }}">
     {{ partial "body-open" . }}
 <bx-skip-to-content href="#main-content" role="navigation" aria-label="Skip to main content"></bx-skip-to-content>    
-<bx-header aria-label="{{ .Site.Params.org }} {{ .Site.Title }}" role="banner">
-  <bx-header-menu-button button-label-active="Close menu" button-label-inactive="Open menu" collapse-mode="responsive" usage-mode="" active=""></bx-header-menu-button>
-  <bx-header-name href="javascript:void 0" prefix="{{ .Site.Params.org }}"> {{ .Site.Title }}</bx-header-name>
-  <bx-header-nav menu-bar-label="{{ .Site.Params.org }} {{ .Site.Title }}" role="navigation">
+<cds-header aria-label="{{ .Site.Params.org }} {{ .Site.Title }}" role="banner">
+  <cds-header-menu-button button-label-active="Close menu" button-label-inactive="Open menu" collapse-mode="responsive" usage-mode="" active=""></cds-header-menu-button>
+  <cds-header-name href="javascript:void 0" prefix="{{ .Site.Params.org }}"> {{ .Site.Title }}</cds-header-name>
+  <cds-header-nav menu-bar-label="{{ .Site.Params.org }} {{ .Site.Title }}" role="navigation">
     {{ if .Site.Menus.header }}
         {{ range sort .Site.Menus.header }}
           {{ if .HasChildren }}
-          <bx-header-menu menu-label="{{ .Name }}" trigger-content="{{ .Name }}" role="listitem">
+          <cds-header-menu menu-label="{{ .Name }}" trigger-content="{{ .Name }}" role="listitem">
             {{ range .Children }}
-              <bx-header-menu-item href="{{ .URL }}" tabindex="-1" role="listitem">{{ .Name }}</bx-header-menu-item>
+              <cds-header-menu-item href="{{ .URL }}" tabindex="-1" role="listitem">{{ .Name }}</cds-header-menu-item>
               {{ end }}
-            </bx-header-menu>
+            </cds-header-menu>
           {{ else }}
-            <bx-header-nav-item active="" href="{{ .URL }}">{{ .Name }}</bx-header-nav-item>
+            <cds-header-nav-item active="" href="{{ .URL }}">{{ .Name }}</cds-header-nav-item>
           {{ end }}
         {{ end }}
     {{ end }}
-  </bx-header-nav>
-</bx-header>
+  </cds-header-nav>
+</cds-header>
 <div id="main-content" name="main-content" data-floating-menu-container="" class="bx--body bx-ce-demo-devenv--container" role="none">
 <main class="bx--content bx-hugo-carbon--ui-shell-content">
   <div class="bx--grid">
