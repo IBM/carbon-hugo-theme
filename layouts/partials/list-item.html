@@ -1,2 +1,10 @@
 <h3><a href="{{ .Permalink }}" class="u-url">{{ .Title }}</a></h3>
-<p>{{ .Summary }}</p>
+<p>
+{{ with .Resources.Match .Params.thumbnail }}
+{{ range first 1 . }}
+{{ $image := .Fit "320x240" }}
+<img class="thumbnail" src="{{ $image.Permalink }}" />
+{{ end }}
+{{ end }}
+    {{ .Summary }}
+</p>
