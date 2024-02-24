@@ -43,12 +43,12 @@
     }
   </style>
 </head>
-<body class="cds-theme-zone-g100 {{ .Site.Params.build }}">
+<body class="cds-theme-zone-{{ if isset .Site.Params "cdstheme" }}{{.Site.Params.cdstheme }}{{ else }}g100{{ end }} {{ .Site.Params.build }}">
     {{ partial "body-open" . }}
-<bx-skip-to-content href="#main-content" role="navigation" aria-label="Skip to main content"></bx-skip-to-content>    
+<cds-skip-to-content href="#main-content" role="navigation" aria-label="Skip to main content"></cds-skip-to-content>    
 <cds-header aria-label="{{ .Site.Params.org }} {{ .Site.Title }}" role="banner">
   <cds-header-menu-button button-label-active="Close menu" button-label-inactive="Open menu" collapse-mode="responsive" usage-mode="" active=""></cds-header-menu-button>
-  <cds-header-name href="javascript:void 0" prefix="{{ .Site.Params.org }}"> {{ .Site.Title }}</cds-header-name>
+  <cds-header-name href="{{ .Site.BaseURL }}" prefix="{{ .Site.Params.org }}"> {{ .Site.Title }}</cds-header-name>
   <cds-header-nav menu-bar-label="{{ .Site.Params.org }} {{ .Site.Title }}" role="navigation">
     {{ if .Site.Menus.header }}
         {{ range sort .Site.Menus.header }}
@@ -65,9 +65,9 @@
     {{ end }}
   </cds-header-nav>
 </cds-header>
-<div id="main-content" name="main-content" data-floating-menu-container="" class="bx--body bx-ce-demo-devenv--container" role="none">
-<main class="bx--content bx-hugo-carbon--ui-shell-content">
-  <div class="bx--grid">
-    <div class="bx--row">
-      <div class="bx--col-lg-12">
+<div id="main-content" name="main-content" data-floating-menu-container="" class="cds--body cds-ce-demo-devenv--container" role="none">
+<main class="cds--content cds-hugo-carbon--ui-shell-content">
+  <div class="cds--grid">
+    <div class="cds--row">
+      <div class="cds--col-lg-12">
 

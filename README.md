@@ -7,4 +7,4 @@ Making use of [Carbon](https://carbondesignsystem.com/) for [Hugo](https://gohug
 ![Screenshot of theme](images/tn.png)
 
  - Support for Instana EUM (just set params > instanaKey)
-
+ - Support for theme selection (params > cdstheme) - supports `white`, `g10`, `g90` and `g100` 
