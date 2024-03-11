@@ -3,5 +3,26 @@
 </div>
 </main>
 {{ partial "side-nav.html" . }}
+{{ if isset .Site.Params "darktheme" }}
+<script type="text/javascript">
+    function setTheme(themeName) {
+        document.body.className = themeName;
+    }
+    
+    function selectTheme() {
+        const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
+        if (prefersDarkTheme.matches) {
+            setTheme('cds-theme-zone-{{.Site.Params.darktheme }}');
+        } 
+        
+        const prefersLightTheme = window.matchMedia('(prefers-color-scheme: light)');
+        if (prefersLightTheme.matches) {
+            setTheme('cds-theme-zone-{{.Site.Params.lighttheme }}');
+        }
+    }
+    selectTheme()
+    window.matchMedia('(prefers-color-scheme: dark)').onchange = selectTheme
+</script>
+{{ end }}
 </body>
 </html>
