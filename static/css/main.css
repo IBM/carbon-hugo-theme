@@ -1,20 +1,10 @@
 body {
   transition: opacity 0s;
 }
-/*main#main-content {
-  margin-top: 48px;
-  margin-left: 256px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-}
-main.bx--content {
-  width: 100%;
-}
-*/
-.bx--content.bx-hugo-carbon--ui-shell-content {
-  background-color: var(--cds-ui-01, #f4f4f4);
+
+.cds--content.cds-hugo-carbon--ui-shell-content {
+  background-color: var(--cds-background);
+  color: var(--cds-text-primary);
   margin: 0;
   min-height: 100vh;
   width: 100%;
@@ -27,11 +17,11 @@ li p {
 
 h1,h2,h3,h4,h5,h6,p,table {
   margin: 2rem 1rem 2rem 1rem;
+  color: var(--cds-text-primary);
 }
-
 /* Redefine standard html elements based on bx-ordered-list styling */
 ol li, ul li {
-  color: var(--cds-text-01,#161616);
+  color: var(--cds-text-primary,#161616);
   display: list-item;
   margin-bottom: 0.25rem;
   font-size: 14px;
@@ -54,7 +44,10 @@ ul ul li {
   list-style: square;
 }
 
-a.u-url {text-decoration: none;color:black;}
+a.u-url {
+  text-decoration: none;
+  color: var(--cds-text-primary);
+}
 /* Intro page */
 div.intro {
     padding-top: 3rem;
@@ -87,8 +80,8 @@ tbody tr {
   border-bottom: 1px solid var(--cds-ui-03,#e0e0e0);
 }
 tr th {
-  background: var(--cds-ui-01,#fff);
-  color: var(--cds-text-01,#161616);
+  background: var(--cds-background,#fff);
+  color: var(--cds-text-primary,#161616);
   font-size: var(--cds-heading-01-font-size,.875rem);
   font-weight: var(--cds-heading-01-font-weight,600);
   letter-spacing: var(--cds-heading-01-letter-spacing,.16px);
@@ -98,7 +91,7 @@ tr th {
   white-space: nowrap;
 }
 tbody tr td {
-  color: var(--cds-text-01,#161616);
+  color: var(--cds-text-primary,#161616);
   font-size: var(--cds-body-short-01-font-size,.875rem);
   font-weight: var(--cds-body-short-01-font-weight,400);
   letter-spacing: var(--cds-body-short-01-letter-spacing,.16px);
@@ -203,3 +196,5 @@ line-height: 1rem;
 /* GenericTraceback */ .chroma .gt { color: #fa4d56 }
 /* GenericUnderline */ .chroma .gl { text-decoration: underline }
 /* TextWhitespace */ .chroma .w { color: #6e7681 }
+
+.header {margin-top: 2rem;}
