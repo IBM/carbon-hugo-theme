@@ -33,8 +33,12 @@
   
   <style>
 @media (min-width: 66rem) {
-.container .cds--grid {
+.cds-hugo-carbon--container .cds--grid {
+  {{ if eq .Site.Params.sidenav "true" }}
   padding-left: calc(25% + 1.5rem);
+  {{ else }}
+  padding-left: 2rem;
+  {{ end }}
   padding-right: 2rem;
 }    
 }
@@ -65,7 +69,7 @@
     {{ end }}
   </cds-header-nav>
 </cds-header>
-<div id="main-content" name="main-content" data-floating-menu-container="" class="cds--body cds-ce-demo-devenv--container" role="none">
+<div id="main-content" name="main-content" data-floating-menu-container="" class="cds--body cds-hugo-carbon--container" role="none">
 <main class="cds--content cds-hugo-carbon--ui-shell-content">
   <div class="cds--grid">
     <div class="cds--row">
