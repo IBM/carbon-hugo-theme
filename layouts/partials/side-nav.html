@@ -7,7 +7,7 @@
         <cds-side-nav-items role="list">
         <cds-side-nav-menu title="{{ .Title }}" role="listitem" {{ if .InSection $currentPage }}expanded=""{{ end }}>
             {{ range .Pages }}
-                <cds-side-nav-menu-item href="{{ .Permalink }}" tabindex="-1" {{ if eq .Permalink $currentPage.Permalink  }}active=""{{ end }}>
+                <cds-side-nav-menu-item href="{{ if .Params.link }}{{.Params.link }}{{ else }}{{ .Permalink }}{{ end }}" tabindex="-1" {{ if eq .Permalink $currentPage.Permalink  }}active=""{{ end }}>
                     {{ .Title }}
                 </cds-side-nav-menu-item>
             {{ end }}
