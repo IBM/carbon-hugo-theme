@@ -208,6 +208,7 @@ line-height: 1rem;
 
 .pagefind-ui__drawer mark{
   background-color: var(--cds-background-inverse-hover);
+  color: var(--cds-text-inverse);
 }
 .pagefind-ui__form {
   width: 20vw;
