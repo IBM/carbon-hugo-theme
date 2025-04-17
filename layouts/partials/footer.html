@@ -3,6 +3,7 @@
 </div>
 </main>
 {{ partial "side-nav.html" . }}
+<script src="/apic-cloud/multi-tenant/pagefind/pagefind-ui.js"></script>
 {{ if isset .Site.Params "darktheme" }}
 <script type="text/javascript">
     function setTheme(themeName) {
@@ -22,6 +23,15 @@
     }
     selectTheme()
     window.matchMedia('(prefers-color-scheme: dark)').onchange = selectTheme
+    
+    
+</script>
+{{ end }}
+{{ if .Site.Params.search }}
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true, resetStyles: false, showImages: false });
+    });
 </script>
 {{ end }}
 </body>
