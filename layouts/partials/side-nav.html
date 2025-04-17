@@ -1,5 +1,5 @@
 {{ if eq .Site.Params.sidenav "true" }}
-<cds-side-nav aria-label="Side navigation" role="navigation" collapse-mode="responsive" usage-mode="">
+<cds-side-nav aria-label="Side navigation" role="navigation" collapse-mode="responsive" usage-mode="" data-pagefind-ignore>
     {{ if eq .Site.Params.sidemenu "auto" }}
     {{ $currentPage := . }}
     {{ range .Site.Home.Pages}}
