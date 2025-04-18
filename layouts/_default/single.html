@@ -8,7 +8,7 @@
     <!-- related posts with the same tags -->
     {{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
 
-    {{ if and .Site.DisqusShortname (not .Params.disableComments) }}
+    {{ if and .Site.Config.Services.Disqus.Shortname (not .Params.disableComments) }}
 
         <h4 class="page-header">Comments</h4>
 
