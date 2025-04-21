@@ -3,7 +3,7 @@
 </div>
 </main>
 {{ partial "side-nav.html" . }}
-<script src="/apic-cloud/multi-tenant/pagefind/pagefind-ui.js"></script>
+<script src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
 {{ if isset .Site.Params "darktheme" }}
 <script type="text/javascript">
     function setTheme(themeName) {
